@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#3d4a6b"/>
+  <!-- apartment tower -->
+  <rect x="12" y="20" width="18" height="30" rx="1.5" fill="#7d9bc4"/>
+  <rect x="16" y="24" width="4" height="4" fill="#3d4a6b"/>
+  <rect x="22" y="24" width="4" height="4" fill="#3d4a6b"/>
+  <rect x="16" y="31" width="4" height="4" fill="#3d4a6b"/>
+  <rect x="22" y="31" width="4" height="4" fill="#3d4a6b"/>
+  <rect x="16" y="38" width="4" height="4" fill="#3d4a6b"/>
+  <rect x="22" y="38" width="4" height="4" fill="#3d4a6b"/>
+  <!-- detached house -->
+  <path d="M30 34 L41 25 L52 34 Z" fill="#e08a4c"/>
+  <rect x="33" y="34" width="16" height="16" fill="#f0a468"/>
+  <rect x="39" y="41" width="5" height="9" fill="#3d4a6b"/>
+</svg>
