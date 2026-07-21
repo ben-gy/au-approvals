@@ -299,6 +299,12 @@ svg.chart { display: block; width: 100%; height: auto; overflow: visible; }
   border-left: 1px solid var(--border-subtle); box-shadow: -12px 0 40px rgba(0,0,0,.16);
   transform: translateX(100%); transition: transform var(--transition-normal);
   overflow-y: auto; padding: var(--space-xl);
+  /* display:none while closed. A drawer parked at translateX(100%) is still a
+     real box on iOS Safari and lets the page scroll sideways — overflow-x:clip
+     neither fixes it nor lets scrollWidth detect it. Taking it out of layout
+     when closed is the only reliable fix; JS restores display just before it
+     animates open. */
+  display: none;
 }
 .drawer.open { transform: translateX(0); }
 .drawer h2 { font-size: var(--font-size-xl); padding-right: 40px; }

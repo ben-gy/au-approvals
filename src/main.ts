@@ -121,6 +121,15 @@ function shell(): void {
   syncHeaderHeight();
   new ResizeObserver(syncHeaderHeight).observe(header);
 
+  // Take the drawer out of layout once it has finished sliding closed, so it
+  // cannot extend the page's horizontal scroll on iOS while parked off-canvas.
+  const drawerEl = document.getElementById('drawer')!;
+  drawerEl.addEventListener('transitionend', (e) => {
+    if (e.propertyName === 'transform' && !drawerEl.classList.contains('open')) {
+      drawerEl.style.display = 'none';
+    }
+  });
+
   document.getElementById('about-btn')!.addEventListener('click', openAbout);
   document.getElementById('overlay')!.addEventListener('click', closeOverlays);
   document.addEventListener('keydown', (e) => {
@@ -212,6 +221,10 @@ function render(): void {
       renderDrawer(drawer, region, data);
       drawer.querySelector('.drawer-close')?.addEventListener('click', closeOverlays);
       overlay.classList.add('open');
+      // Restore display before the slide-in, then force a reflow so the
+      // transform actually animates from off-canvas rather than snapping.
+      drawer.style.display = 'block';
+      void drawer.offsetWidth;
       drawer.classList.add('open');
       (drawer.querySelector('.drawer-close') as HTMLElement | null)?.focus();
     }
